@@ -97,7 +97,7 @@ The framework for EEG-Based Emotion Recognition includes several critical compon
 ![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/a6f73c54-151c-449e-9e15-cdcf57a72c21)
 
 
-### Results and Discussion
+## Results and Discussion
 
 #### Challenges Encountered
 - **Complexity and Noise**: The high dimensionality and inherent noise in EEG data present substantial challenges, particularly for the CNN model.
@@ -114,7 +114,7 @@ The framework for EEG-Based Emotion Recognition includes several critical compon
 - **Utilities and Testing**: The codebase includes utility functions for saving and loading models, ensuring reproducibility and ease of model deployment. Unit tests are integrated to ensure the reliability of data loading and model initialization.
 ![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/6959ff3b-75fd-4327-bdc3-6c3fb5c7b439)
 
-### Visualization and Analysis (Enhanced Description)
+### Visualization and Analysis
 
 #### Extended Data Preprocessing Requirements
 - **Additional Time for EEG Data Preprocessing**: A significant amount of additional time was required for preprocessing EEG data for this activity. The preprocessing method implemented in the dataset was distinct from the approach we adopted. This difference necessitated extra effort to align the data processing methods with our model requirements.
