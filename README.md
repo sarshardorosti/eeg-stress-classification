@@ -1,7 +1,21 @@
 #EEG-Based Emotion Recognition Using Neural Networks
 Sarshar Dorosti (ID: s5639776)
+
+#Files
+Please download the GitHub files from the link below. Also, put the codes in a file to use the new classification.
+
+Article
+https://www.sciencedirect.com/science/article/pii/S2352340921010465
+Github
+https://github.com/wavesresearch/eeg_stress_detection
+Figshare
+https://figshare.com/articles/dataset/SAM_40_Dataset_of_40_Subject_EEG_Recordings_to_Monitor_the_Induced-Stress_while_performing_Stroop_Color-Word_Test_Arithmetic_Task_and_Mirror_Image_Recognition_Task/14562090/1
+
+
 ##Abstract
 In this study, the SAM 40 dataset is specially used to train neural network models to identify emotions from EEG data. This dataset records different emotional states experienced during cognitive activities such as mirror image identification, the Stroop test, and arithmetic tests. The dataset is useful for researching stress and cognitive load since these tasks cause varying degrees of cognitive stress. Python is used for the analysis, which focuses on intricate EEG patterns connected to these mental processes. The dataset allows for a variety of study in signal processing and artifact removal because it contains both raw and modified EEG data. This work advances the development of BCI and EEG-based cognitive state analysis. 
+
+
 ## Introduction 
 This study merges neuroscience and machine learning to gauge cognitive stress levels using 32-channel EEG data from 40 participants (average age: 21.5). The dataset comprises EEG recordings during stress-inducing tasks (e.g., Stroop test, arithmetic, symmetry recognition, and relaxation phases). Each task lasts 25 seconds, with three trials per task, yielding a comprehensive dataset.
 ![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/082ea8a3-8c3f-49f9-8acc-18934b5a6a08)
