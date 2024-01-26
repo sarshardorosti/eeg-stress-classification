@@ -6,8 +6,10 @@ Please download the GitHub files from the link below. Also, put the codes in a f
 
 Article
 https://www.sciencedirect.com/science/article/pii/S2352340921010465
+
 Github
 https://github.com/wavesresearch/eeg_stress_detection
+
 Figshare
 https://figshare.com/articles/dataset/SAM_40_Dataset_of_40_Subject_EEG_Recordings_to_Monitor_the_Induced-Stress_while_performing_Stroop_Color-Word_Test_Arithmetic_Task_and_Mirror_Image_Recognition_Task/14562090/1
 
