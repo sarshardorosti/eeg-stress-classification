@@ -83,8 +83,13 @@ Training and Validation Processes: The codebase encompasses comprehensive proced
 
 # References
 Makeig, S., et al. (1996). "Independent component analysis of electroencephalographic data". Advances in neural information processing systems.
+
 Lawhern, V. J., et al. (2018). "EEGNet: a compact convolutional neural network for EEG-based brain-computer interfaces". Journal of Neural Engineering.
+
 Bashivan, P., et al. (2016). "Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks". arXiv preprint arXiv:1511.06448.
+
 Jirayucharoensak, S., et al. (2014). "EEG-based emotion recognition using Deep Learning Network with principal component based covariate shift adaptation". The Scientific World Journal.
+
 Dhake, D., & Angal, Y. (2023). "A Comparative Analysis of EEG-based Stress Detection Utilizing Machine Learning and Deep Learning Classifiers with a Critical Literature Review". International Journal on Recent and Innovation Trends in Computing and Communication, 11(8s), 61–73. https://doi.org/10.17762/ijritcc.v11i8s.7175
+
 
