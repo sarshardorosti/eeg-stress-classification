@@ -71,7 +71,7 @@ Data Segmentation: EEG data is segmented according to specific tasks: Stroop col
 
 
 
-## Model Description
+# Model Description
 ### Code Overview
 The framework for EEG-Based Emotion Recognition includes several critical components for data processing, handling, and neural network implementation, leveraging the power of PyTorch for efficient computation.
 
@@ -99,28 +99,28 @@ The framework for EEG-Based Emotion Recognition includes several critical compon
 
 ## Results and Discussion
 
-#### Challenges Encountered
+### Challenges Encountered
 - **Complexity and Noise**: The high dimensionality and inherent noise in EEG data present substantial challenges, particularly for the CNN model.
 - **Subject Variability**: The variability in EEG signals across different subjects and sessions posed hurdles for consistent model performance.
 
-#### Model Training and Outcome Analysis
+### Model Training and Outcome Analysis
 - **Data Reshaping**: Input data is specifically reshaped to meet the CNN's requirements, ensuring compatibility with the model's expected input format.
 - **CNN Performance**: The CNN model, despite its sophisticated architecture, did not achieve the anticipated accuracy, indicating potential overfitting or the need for further hyperparameter tuning.
 - **`SimpleNN` as an Alternative**: The simpler `SimpleNN` model, with its multilayer perceptron structure, might be more suitable for certain datasets due to its straightforward architecture.
 
-#### Training, Validation, and Utility Processes
+### Training, Validation, and Utility Processes
 - **Comprehensive Training Procedures**: The training process involves iterating over epochs, with functions `train_one_epoch` for model training and `validate` for performance evaluation.
 - **Early Stopping Mechanism**: `EarlyStopping` is employed to halt training when no significant improvement in validation loss is observed, aiding in preventing overfitting.
 - **Utilities and Testing**: The codebase includes utility functions for saving and loading models, ensuring reproducibility and ease of model deployment. Unit tests are integrated to ensure the reliability of data loading and model initialization.
 ![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/6959ff3b-75fd-4327-bdc3-6c3fb5c7b439)
 
-### Visualization and Analysis
+## Visualization and Analysis
 
-#### Extended Data Preprocessing Requirements
+### Extended Data Preprocessing Requirements
 - **Additional Time for EEG Data Preprocessing**: A significant amount of additional time was required for preprocessing EEG data for this activity. The preprocessing method implemented in the dataset was distinct from the approach we adopted. This difference necessitated extra effort to align the data processing methods with our model requirements.
 - **Future Considerations**: Given that the primary objective of this project was not solely to maximize accuracy, we have deferred further optimization of the preprocessing steps to subsequent phases. This decision allows for a more focused approach on model development and performance evaluation in the current stage.
 
-#### Insights from Model Implementation and Comparison
+### Insights from Model Implementation and Comparison
 - **Challenges with Random State in Data Selection**: During the implementation and comparative analysis of the models, we encountered an issue where the random state selection for test data was ineffective. This limitation hindered the learning process by restricting it to a single epoch.
 - **Impact on Accuracy Calculation**: The aforementioned issue with the random state also affected the accuracy measurement, preventing an accurate assessment of the model's performance. This observation highlights the need for a more robust method of data partitioning to ensure consistent and reliable training and validation processes.
 
