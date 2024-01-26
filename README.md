@@ -53,7 +53,7 @@ Data Accessibility: Publicly available on Figshare ([DOI](https://doi.org/10.608
 
 ![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/f3696b33-7b04-45ba-a414-f73e7824ccac)
 
-###Data Structure
+### Data Structure
 Raw and Filtered Data: The dataset is divided into two main folders: /raw_data and /filtered_data. The /raw_data folder includes EEG time-series segmented according to experimental trials, containing noise and artifacts. The /filtered_data folder, on the other hand, presents clean EEG data, free from artifacts.
 Artifacts and Filtering: To cater to different research methodologies, both raw and processed data are provided. This allows researchers to apply various filtering methods for artifact removal.
 Subject Feedback: Included is a .xls file named scales.xls, which contains feedback from subjects rating their stress levels on a scale of 1–10 during each task and trial.
@@ -62,7 +62,7 @@ Subject Feedback: Included is a .xls file named scales.xls, which contains feedb
 ![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/c4434579-eb1f-497d-b180-7486ec164801)
 
 
-###Additional Resources
+### Additional Resources
 Artifact Removal Code: The /artifact_removal folder includes Matlab code (correct_EEG.m) for artifact removal, along with two .mat files (Corrupted_EEG.mat and Cleaned_EEG.mat) demonstrating the process on a sample EEG recording.
 Data Segmentation: EEG data is segmented according to specific tasks: Stroop color-word test, arithmetic task, mirror image recognition task, and a relaxation state. The data is provided in EEGLAB format and can be visualized through the EEGLAB interface.
 
@@ -73,14 +73,26 @@ Data Segmentation: EEG data is segmented according to specific tasks: Stroop col
 
 ## Model Description
 ### Code Overview
-Data Loading and Preparation: The `load_dataset`, `load_labels`, and `split_data` functions are crucial for loading, processing, and preparing the EEG data for analysis.
-Data Handling: The custom `EEGDataset` class facilitates handling EEG data within the PyTorch framework, significantly streamlining batch processing during model training.
-The `SimpleNN` class, designed for precise EEG data classification, is a multilayer perceptron with meticulously calibrated linear layers. It incorporates ReLU activation functions for modeling non-linear EEG patterns. Dropout layers are strategically placed to prevent overfitting, enhancing generalization. The `train_one_epoch` function updates model parameters using backpropagation, while the `validate` function assesses performance on a separate dataset. The `EarlyStopping` class halts training when validation performance stalls, ensuring robust EEG data classification.
-The `EEG_CNN` class was designed for EEG data classification using Convolutional Neural Networks (CNNs). Key aspects of this approach include:
--Layer Composition: Multiple convolutional layers with ReLU activation and max pooling for spatial feature extraction.
-Deepening and Expansion: Convolutional layers increase in filter count for refining features.
-Fully Connected Layers: Four fully connected layers with dropout to prevent overfitting.
-Output and Classification: Final layer reduces dimensions to the number of classes with softmax.
+The framework for EEG-Based Emotion Recognition includes several critical components for data processing, handling, and neural network implementation, leveraging the power of PyTorch for efficient computation.
+
+#### Data Loading and Preparation
+- **Functions**: `load_dataset`, `load_labels`, and `split_data` form the backbone of data interaction, efficiently loading and processing EEG data for analysis.
+- **Data Types and Tests**: Supports various data types (e.g., `ica_filtered`) and test conditions (e.g., `Arithmetic`) with assertive checks for compatibility and validity.
+- **Data Structure Adaptation**: Data is reshaped into epochs, transforming the raw EEG signals into a format suitable for neural network training.
+
+#### Data Handling with Custom Class
+- **`EEGDataset` Class**: A custom PyTorch `Dataset` class, it encapsulates EEG data and labels, facilitating streamlined batch processing during model training. This class converts data into `FloatTensors` for compatibility with PyTorch's computation requirements.
+
+#### Neural Network Models
+1. **`SimpleNN`: A Multilayer Perceptron for EEG Classification**
+   - **Architecture**: Consists of multiple linear layers with ReLU activations and dropout for non-linear EEG pattern modeling and overfitting prevention.
+   - **Customizability**: Parameters like number of layers and neurons per layer are configurable, allowing for flexible model architecture.
+
+2. **`EEG_CNN`: A Convolutional Neural Network for Advanced EEG Analysis**
+   - **Convolutional Layers**: Utilizes multiple convolutional layers with ReLU activation and max pooling, designed to extract spatial features from EEG data. The architecture starts with 64 filters in the first layer and expands to 128 in subsequent layers.
+   - **Fully Connected Layers**: Four linear layers with dropout are used to prevent overfitting, each layer gradually reducing the dimensionality towards the output size.
+   - **Output Layer**: The final layer employs a sigmoid function, making the model suitable for binary classification tasks.
+
 
 ![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/a6f73c54-151c-449e-9e15-cdcf57a72c21)
 
