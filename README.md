@@ -1,1 +1,90 @@
-# eeg-stress-classification
+#EEG-Based Emotion Recognition Using Neural Networks
+Sarshar Dorosti (ID: s5639776)
+##Abstract
+In this study, the SAM 40 dataset is specially used to train neural network models to identify emotions from EEG data. This dataset records different emotional states experienced during cognitive activities such as mirror image identification, the Stroop test, and arithmetic tests. The dataset is useful for researching stress and cognitive load since these tasks cause varying degrees of cognitive stress. Python is used for the analysis, which focuses on intricate EEG patterns connected to these mental processes. The dataset allows for a variety of study in signal processing and artifact removal because it contains both raw and modified EEG data. This work advances the development of BCI and EEG-based cognitive state analysis. 
+## Introduction 
+This study merges neuroscience and machine learning to gauge cognitive stress levels using 32-channel EEG data from 40 participants (average age: 21.5). The dataset comprises EEG recordings during stress-inducing tasks (e.g., Stroop test, arithmetic, symmetry recognition, and relaxation phases). Each task lasts 25 seconds, with three trials per task, yielding a comprehensive dataset.
+![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/082ea8a3-8c3f-49f9-8acc-18934b5a6a08)
+
+
+![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/a46e796a-75f4-442b-bc5b-1f12a83bc275)
+![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/ec56bf14-a2da-4ac5-b1ef-532541dbdd7a)
+![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/aab83c24-2d2f-4543-9cae-ffa42f9d85f2)
+
+Our approach involves EEG data import with `load_dataset` and `load_labels`, efficient handling via the `EEGDataset` class in PyTorch for batch processing during training. We have two model classes: `SimpleNN` (multilayer perceptron with ReLU activation and dropout) for foundational analysis and `EEG_CNN` (CNN model) to extract spatial features from complex EEG data.
+Thorough training and validation with `train_one_epoch` and `validate` ensure precision and reliability. We employ `EarlyStopping` to combat overfitting and enhance model generalization. Additionally, we incorporate functionalities for model storage, retrieval, and unit tests for data loading and model initialization reliability.
+
+![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/d886b925-6973-4bb1-80a7-b6755a879fad)
+
+# Literature Review
+The topic of emotion recognition utilizing EEG data shows great potential, but it encounters difficulties stemming from the complexity of high-dimensional data and the presence of noise. ICA and wavelet transform are essential techniques for removing artifacts and reducing noise (Makeig, et al., 1996).
+EEG analysis has been revolutionized by the use of deep learning techniques, such as Convolutional Neural Networks (CNNs) for extracting features and Recurrent Neural Networks (RNNs), particularly Long Short-Term Memory (LSTM) networks, for capturing temporal dynamics (Lawhern, et al., 2018; Bashivan, et al., 2016).
+In their study, Dhake and Angal (2023) conducted a comparison of stress detection approaches based on EEG signals. They discovered that deep learning classifiers exhibited superior performance compared to typical machine learning techniques. With feature extractors like PCA, ICA, and DCT, deep learning outperformed classical techniques by 76% in accuracy (Dhake & Angal, 2023).
+The results emphasize the capacity of deep learning to effectively manage the intricate nature of EEG data for the purpose of stress and emotion recognition. Future research endeavors to tackle obstacles such as differences between individuals and disturbances, by including many types of data and investigating unsupervised and semi-supervised learning techniques (Jirayucharoensak, et al., 2014).
+
+# Dataset Description
+## Specifications Table
+Subject Area: Neuroscience and Psychology.
+More Specific Subject Area: Brain-Computer Interface, Experimental and Cognitive Psychology, Neuroimaging.
+Type of Data: 32 Channel EEG time-series data.
+Data Acquisition: Collected using visual stimuli across diverse cognitive tasks, recorded with a 32-channel Emotiv Epoc Flex gel kit.
+Data Format: Both raw and processed EEG time series.
+Parameters for Data Collection: EEG signals recorded from 32 channels, sampled at 128 SPS (1024 Hz internal).
+Description of Data Collection: Data gathered from 40 subjects during various cognitive tasks, aiming to monitor short-term stress responses.
+EEG Data Plotting: A .locs file, Coordinates.locs, facilitates the plotting of EEG data.
+Data Source Location: Department of Information Technology, Gauhati University, Guwahati, India.
+Data Accessibility: Publicly available on Figshare ([DOI](https://doi.org/10.6084/m9.figshare.14562090.v1)).
+
+![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/f3696b33-7b04-45ba-a414-f73e7824ccac)
+
+###Data Structure
+Raw and Filtered Data: The dataset is divided into two main folders: /raw_data and /filtered_data. The /raw_data folder includes EEG time-series segmented according to experimental trials, containing noise and artifacts. The /filtered_data folder, on the other hand, presents clean EEG data, free from artifacts.
+Artifacts and Filtering: To cater to different research methodologies, both raw and processed data are provided. This allows researchers to apply various filtering methods for artifact removal.
+Subject Feedback: Included is a .xls file named scales.xls, which contains feedback from subjects rating their stress levels on a scale of 1–10 during each task and trial.
+
+
+![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/c4434579-eb1f-497d-b180-7486ec164801)
+
+
+###Additional Resources
+Artifact Removal Code: The /artifact_removal folder includes Matlab code (correct_EEG.m) for artifact removal, along with two .mat files (Corrupted_EEG.mat and Cleaned_EEG.mat) demonstrating the process on a sample EEG recording.
+Data Segmentation: EEG data is segmented according to specific tasks: Stroop color-word test, arithmetic task, mirror image recognition task, and a relaxation state. The data is provided in EEGLAB format and can be visualized through the EEGLAB interface.
+
+
+![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/640b49de-d826-4e4f-afbf-bf1c4b94dcbc)
+
+
+
+## Model Description
+### Code Overview
+Data Loading and Preparation: The `load_dataset`, `load_labels`, and `split_data` functions are crucial for loading, processing, and preparing the EEG data for analysis.
+Data Handling: The custom `EEGDataset` class facilitates handling EEG data within the PyTorch framework, significantly streamlining batch processing during model training.
+The `SimpleNN` class, designed for precise EEG data classification, is a multilayer perceptron with meticulously calibrated linear layers. It incorporates ReLU activation functions for modeling non-linear EEG patterns. Dropout layers are strategically placed to prevent overfitting, enhancing generalization. The `train_one_epoch` function updates model parameters using backpropagation, while the `validate` function assesses performance on a separate dataset. The `EarlyStopping` class halts training when validation performance stalls, ensuring robust EEG data classification.
+The `EEG_CNN` class was designed for EEG data classification using Convolutional Neural Networks (CNNs). Key aspects of this approach include:
+-Layer Composition: Multiple convolutional layers with ReLU activation and max pooling for spatial feature extraction.
+Deepening and Expansion: Convolutional layers increase in filter count for refining features.
+Fully Connected Layers: Four fully connected layers with dropout to prevent overfitting.
+Output and Classification: Final layer reduces dimensions to the number of classes with softmax.
+
+![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/a6f73c54-151c-449e-9e15-cdcf57a72c21)
+
+
+# Results + Discussion
+#### Challenges Faced
+High Dimensionality and Noise: EEG data's complexity and noise posed challenges for CNNs.
+Inherent Variability: Variability in EEG data across subjects and sessions hindered consistent learning.
+
+#### Model Training and Outcome
+- Input data was reshaped for the CNN's requirements.
+- The CNN model fell short of expected accuracy, suggesting a simpler model like `SimpleNN` might be more suitable.
+Training and Validation Processes: The codebase encompasses comprehensive procedures for training the neural network across various epochs, validating the model's performance, and implementing early stopping to optimize the learning process.
+-Utilities and Testing: Includes utility functions for saving and loading trained models. Additionally, unit tests are incorporated to verify the functionality of data loading and model initialization processes.
+![image](https://github.com/sarshardorosti/eeg-stress-classification/assets/50841748/6959ff3b-75fd-4327-bdc3-6c3fb5c7b439)
+
+# References
+Makeig, S., et al. (1996). "Independent component analysis of electroencephalographic data". Advances in neural information processing systems.
+Lawhern, V. J., et al. (2018). "EEGNet: a compact convolutional neural network for EEG-based brain-computer interfaces". Journal of Neural Engineering.
+Bashivan, P., et al. (2016). "Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks". arXiv preprint arXiv:1511.06448.
+Jirayucharoensak, S., et al. (2014). "EEG-based emotion recognition using Deep Learning Network with principal component based covariate shift adaptation". The Scientific World Journal.
+Dhake, D., & Angal, Y. (2023). "A Comparative Analysis of EEG-based Stress Detection Utilizing Machine Learning and Deep Learning Classifiers with a Critical Literature Review". International Journal on Recent and Innovation Trends in Computing and Communication, 11(8s), 61–73. https://doi.org/10.17762/ijritcc.v11i8s.7175
+
